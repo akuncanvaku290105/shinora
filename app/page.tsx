@@ -10,8 +10,8 @@ export default function HomePage() {
     <div className="absolute bottom-[-250px] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[180px]" />
 
       {/* NAVBAR */}
-      <header className="px-8 pt-6">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-white/5 px-8 py-1 backdrop-blur-md">
+      <header className="px-4 pt-4 md:px-8 md:pt-6">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-md md:px-8">
 
           {/* LOGO */}
           <div className="flex items-center gap-2">
@@ -23,7 +23,7 @@ export default function HomePage() {
             />
 
             <h1
-              className="text-2xl tracking-[0.25em] text-white"
+              className="text-lg md:text-2xl tracking-[0.15em] md:tracking-[0.25em] text-white"
               style={{ fontFamily: "Orbitron, sans-serif" }}
             >
               SHINORA
@@ -31,7 +31,7 @@ export default function HomePage() {
           </div>
 
           {/* MENU */}
-          <div className="flex items-center gap-5 rounded-full bg-white/5 px-8 py-4 text-gray-300">
+          <div className="hidden md:flex items-center gap-5 rounded-full bg-white/5 px-8 py-4 text-gray-300">
 
             <a
               href="#"
@@ -59,6 +59,7 @@ export default function HomePage() {
 <a
   href="/chat"
   className="
+  hidden md:block
   group
   relative
   overflow-hidden
@@ -100,7 +101,7 @@ export default function HomePage() {
         <div className="absolute bottom-[-300px] h-[700px] w-[1200px] rounded-full border border-purple-500/20 bg-purple-500/5 blur-3xl"></div>
 
         {/* TITLE */}
-        <h1 className="max-w-5xl text-5xl md:text-7xlfont-black leading-tight">
+        <h1 className="max-w-5xl text-4xl font-black leading-tight md:text-7xl">
 
           <span className="text-white">
             Your Futuristic
@@ -118,12 +119,12 @@ export default function HomePage() {
         </h1>
 
         {/* DESCRIPTION */}
-        <p className="mt-8 max-w-2xl text-lg text-gray-400">
+        <p className="mt-8 max-w-2xl px-4 text-base text-gray-400 md:text-lg">
           Shaping the future of artificial intelligence through elegant and immersive experiences.
         </p>
 
         {/* BUTTONS */}
-        <div className="mt-12 flex gap-5">
+        <div className="mt-12 flex flex-col gap-5 md:flex-row">
 
 <a
   href="/chat"
@@ -179,11 +180,11 @@ export default function HomePage() {
       {/* FEATURES */}
 <section
   id="features"
-  className="mx-auto max-w-7xl px-8 py-24"
+  className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24"
 >
   {/* TITLE */}
   <div className="text-center">
-    <h2 className="text-5xl font-bold text-white">
+    <h2 className="text-3xl font-bold text-white md:text-5xl">
       Core Features
     </h2>
 
@@ -193,7 +194,7 @@ export default function HomePage() {
   </div>
 
   {/* CARDS */}
-  <div className="mt-16 grid gap-8 md:grid-cols-3">
+  <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
 
     {/* CARD 1 */}
     <div className="rounded-3xl border border-white/5 bg-white/[0.03] p-8 backdrop-blur-md transition duration-300 hover:-translate-y-2 hover:border-purple-500/40 hover:bg-white/10 hover:shadow-xl hover:shadow-purple-500/10">
@@ -251,12 +252,12 @@ export default function HomePage() {
 </section>
 {/* AI PREVIEW SECTION */}
 
-<section className="relative mx-auto max-w-7xl px-8 py-32">
+<section className="relative mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-32">
 
   {/* TITLE */}
   <div className="text-center">
 
-    <h2 className="text-5xl font-bold">
+    <h2 className="text-3xl font-bold md:text-5xl">
       Experience Shinora AI
     </h2>
 
@@ -293,7 +294,7 @@ export default function HomePage() {
       {/* USER */}
       <div className="flex justify-end">
 
-        <div className="max-w-md rounded-3xl bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-4 text-white shadow-lg shadow-purple-500/20">
+        <div className="w-full max-w-md rounded-3xl bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-4 text-white shadow-lg shadow-purple-500/20">
           Generate a futuristic anime city concept.
         </div>
 
@@ -302,7 +303,7 @@ export default function HomePage() {
       {/* AI */}
       <div className="flex justify-start">
 
-        <div className="max-w-2xl transition duration-300 hover:-translate-y-2 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-500/10 bg-white/[0.04] px-6 py-5 text-gray-300 backdrop-blur-md">
+        <div className="w-full max-w-2xl transition duration-300 hover:-translate-y-2 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-500/10 bg-white/[0.04] px-6 py-5 text-gray-300 backdrop-blur-md">
 
           <div className="mb-3 flex items-center gap-3">
 
@@ -339,7 +340,7 @@ export default function HomePage() {
 </section>
 {/* FOOTER */}
 
-<footer className="border-t border-white/10 px-8 py-10">
+<footer className="border-t border-white/10 px-4 py-10 md:px-8">
 
   <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-center md:flex-row">
 
