@@ -313,7 +313,9 @@ const resetSettings = () => {
       <main className="relative flex-1 overflow-hidden p-4 sm:p-6 lg:p-10">
 
 <button
-  onClick={() => setSidebarOpen(true)}
+  onClick={() =>
+    setSidebarOpen(!sidebarOpen)
+  }
   className="mb-6 rounded-xl border border-white/10 bg-white/[0.04] p-3 lg:hidden"
 >
 
