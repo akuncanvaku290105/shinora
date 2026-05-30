@@ -188,13 +188,13 @@ return (
 <aside
   className={`fixed left-0 top-0 z-[60] flex h-full w-[280px]
   flex-col border-r border-white/10 bg-[#111827] p-6
-  transition-all duration-300
+  transition-transform duration-300
   lg:static lg:w-[310px]
-  ${
-    sidebarOpen
-      ? "left-0"
-      : "-left-[300px]"
-  }`}
+ ${
+  sidebarOpen
+    ? "translate-x-0"
+    : "-translate-x-full"
+}`}
 >
 
         {/* LOGO */}
