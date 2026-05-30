@@ -186,15 +186,15 @@ return (
 
       {/* LEFT SIDEBAR */}
 <aside
-  className={`fixed left-0 top-0 z-[60] flex h-full w-[280px]
-  flex-col border-r border-white/10 bg-[#111827] p-6
+  className={`fixed top-0 left-0 z-[60] h-full w-[280px]
+  flex flex-col border-r border-white/10 bg-[#111827] p-6
   transition-transform duration-300
-  lg:static lg:w-[310px]
- ${
-  sidebarOpen
-    ? "translate-x-0"
-    : "-translate-x-full"
-}`}
+  ${
+    sidebarOpen
+      ? "translate-x-0"
+      : "-translate-x-full"
+  }
+  lg:translate-x-0 lg:static lg:w-[310px]`}
 >
 
         {/* LOGO */}
@@ -385,13 +385,11 @@ return (
 
 </aside>
   <main className="relative flex-1 overflow-hidden p-4 pt-20 lg:p-10">
-    <button
+<button
   onClick={() => setSidebarOpen(true)}
   className="mb-6 rounded-xl border border-white/10 bg-white/[0.04] p-3 lg:hidden"
 >
-
   ☰
-
 </button>
 
     {/* BACKGROUND GLOW */}
@@ -588,6 +586,14 @@ return (
 
     </main>
     </div>
+{sidebarOpen && (
+
+  <div
+    onClick={() => setSidebarOpen(false)}
+    className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
+  />
+
+)}
 {sidebarOpen && (
 
   <div
