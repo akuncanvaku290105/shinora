@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import Link from "next/link";
 export default function RegisterPage() {
 
   const [username, setUsername] =
@@ -54,7 +54,13 @@ export default function RegisterPage() {
   };
 
   return (
-
+<>
+<Link
+  href="/"
+  className="absolute left-6 top-6 rounded-xl bg-white/10 px-4 py-2 text-white transition hover:bg-white/20"
+>
+  ← Kembali
+</Link>
     <div className="flex min-h-screen items-center justify-center bg-[#060B1A] text-white">
 
       <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl">
@@ -119,7 +125,7 @@ export default function RegisterPage() {
       </div>
 
     </div>
-
+</>
   );
 
 }

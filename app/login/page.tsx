@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import Link from "next/link";
 export default function LoginPage() {
 
   const [email, setEmail] =
@@ -56,6 +56,14 @@ export default function LoginPage() {
   };
 
   return (
+  <>
+
+    <Link
+      href="/"
+      className="absolute left-6 top-6 rounded-xl bg-white/10 px-4 py-2 text-white transition hover:bg-white/20"
+    >
+      ← Kembali
+    </Link>
 
     <div className="flex min-h-screen items-center justify-center bg-[#060B1A] text-white">
 
@@ -112,6 +120,9 @@ export default function LoginPage() {
 
     </div>
 
-  );
+  </>
+
+);
+
 
 }
