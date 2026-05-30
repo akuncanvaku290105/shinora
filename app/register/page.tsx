@@ -19,7 +19,7 @@ export default function RegisterPage() {
   const handleRegister = async () => {
 
     const response = await fetch(
-      "https://shinora.infinityfreeapp.com/backend/register.php",
+      "/api/register",
       {
         method: "POST",
         headers: {
@@ -35,6 +35,7 @@ export default function RegisterPage() {
     );
 
     const data = await response.json();
+    console.log(data);
 
     if (data.success) {
 

@@ -11,7 +11,10 @@
   "dependencies": {
     "@fontsource/orbitron": "^5.2.8",
     "@google/generative-ai": "^0.24.1",
+    "@supabase/supabase-js": "^2.106.2",
+    "bcryptjs": "^3.0.3",
     "lucide-react": "^1.17.0",
+    "mysql2": "^3.22.4",
     "next": "16.2.6",
     "openai": "^6.39.1",
     "react": "19.2.4",

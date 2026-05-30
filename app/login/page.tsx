@@ -16,7 +16,7 @@ export default function LoginPage() {
   const handleLogin = async () => {
 
     const response = await fetch(
-      "https://shinora.infinityfreeapp.com/backend/login.php",
+      "/api/login",
       {
         method: "POST",
         headers: {
