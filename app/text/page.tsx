@@ -185,7 +185,16 @@ return (
 >
 
       {/* LEFT SIDEBAR */}
-      <aside className="flex w-[310px] flex-col border-r border-white/10 bg-[#111827] p-6">
+      <aside
+  className={`fixed left-0 top-0 z-50 flex h-full w-[280px]
+  flex-col border-r border-white/10 bg-[#111827] p-6
+  transition-transform duration-300 lg:relative lg:translate-x-0
+  ${
+    sidebarOpen
+      ? "translate-x-0"
+      : "-translate-x-full"
+  }`}
+>
 
         {/* LOGO */}
         <div className="mb-10 flex items-center gap-3">
@@ -374,7 +383,7 @@ return (
         </div>
 
 </aside>
-  <main className="relative flex-1 overflow-hidden p-10">
+  <main className="relative flex-1 overflow-hidden p-4 pt-20 lg:p-10">
     <button
   onClick={() => setSidebarOpen(true)}
   className="mb-6 rounded-xl border border-white/10 bg-white/[0.04] p-3 lg:hidden"
@@ -388,7 +397,7 @@ return (
 <div className="absolute left-[-200px] top-[-200px] h-[500px] w-[500px] rounded-full bg-purple-500/20 blur-[120px]" />
 <div className="absolute bottom-[-200px] right-[-200px] h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]" />
 
-      <div className="mb-10 flex items-center gap-4">
+      <div className="mb-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
 
         <Image
           src="/logo.png"
@@ -400,9 +409,9 @@ return (
 
         <div>
 
-          <h1
-            className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-3xl font-black text-transparent`}
-          >
+   <h1
+  className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-2xl sm:text-3xl font-black text-transparent`}
+>
             Shinora Text Generator
           </h1>
 
@@ -414,7 +423,7 @@ return (
 
       </div>
 
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto w-full max-w-4xl">
 
     <div className="mb-6 flex flex-wrap gap-3">
 
@@ -454,7 +463,7 @@ return (
       e.currentTarget.scrollHeight + "px";
 
   }}
-  className="w-full rounded-3xl border border-white/10 bg-white/[0.04] p-6 outline-none"
+  className="w-full rounded-3xl border border-white/10 bg-white/[0.04] p-4 text-sm outline-none sm:p-6 sm:text-base"
 />
 <p className="mt-2 text-right text-sm text-gray-500">
 
@@ -491,7 +500,7 @@ return (
 
         </button>
 
-        <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-4 sm:p-8">
 
 <div className="space-y-4 transition-all duration-500">
 
@@ -537,7 +546,7 @@ return (
 
   </div>
 
-<div className="space-y-3">
+<div className="space-y-3 break-words">
 
   {history.length === 0 && (
 
