@@ -193,7 +193,7 @@ useEffect(() => {
 
 <>
     <main
-  className={`flex h-screen overflow-hidden text-white ${
+  className={`flex min-h-screen overflow-hidden text-white ${
     theme === "purple"
       ? "bg-[#050816]"
       : theme === "blue"
@@ -203,7 +203,16 @@ useEffect(() => {
 >
 
       {/* LEFT SIDEBAR */}
-      <aside className="flex w-[310px] flex-col border-r border-white/10 bg-[#111827] p-6">
+      <aside
+  className={`
+    fixed left-0 top-0 z-50 h-full w-[280px]
+    transform border-r border-white/10 bg-[#111827] p-4
+    transition-transform duration-300
+    lg:static lg:flex lg:w-[310px] lg:translate-x-0 lg:p-6
+    flex flex-col
+    ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+  `}
+>
 
         {/* LOGO */}
          <div className="mb-10 flex items-center gap-3">
@@ -219,7 +228,7 @@ useEffect(() => {
            <div>
  
              <h1
-               className="text-2xl tracking-[0.2em]"
+               className="text-xl tracking-[0.15em] lg:text-2xl lg:tracking-[0.2em]"
                style={{
                  fontFamily: "Orbitron"
                }}
@@ -282,7 +291,7 @@ useEffect(() => {
           <FileText size={18} />
         </div>
 
-        <span>
+        <span className="text-sm lg:text-base">
           Text Generator
         </span>
 
@@ -302,7 +311,7 @@ useEffect(() => {
           <ImageIcon size={18} />
         </div>
 
-        <span>
+        <span className="text-sm lg:text-base">
           Image Generator
         </span>
 
@@ -339,7 +348,7 @@ useEffect(() => {
     <Settings size={18} />
   </div>
 
-  <span>
+  <span className="text-sm lg:text-base">
     Settings
   </span>
 
@@ -360,7 +369,7 @@ useEffect(() => {
     <CircleHelp size={18} />
   </div>
 
-  <span>
+  <span className="text-sm lg:text-base">
     Help & FAQ
   </span>
 
@@ -376,7 +385,7 @@ useEffect(() => {
     <Mail size={18} />
   </div>
 
-  <span>
+  <span className="text-sm lg:text-base">
     Contact
   </span>
 
@@ -404,10 +413,10 @@ useEffect(() => {
       </aside>
 
       {/* CENTER CHAT */}
-      <section className="flex h-screen flex-1 flex-col overflow-hidden">
+      <section className="flex min-h-screen flex-1 flex-col overflow-hidden">
 
         {/* TOPBAR */}
-        <div className="flex items-center justify-between border-b border-white/10 px-10 py-6">
+        <div className="flex items-center justify-between border-b border-white/10 px-4 py-4 lg:px-10 lg:py-6">
         <button
   onClick={() => setSidebarOpen(true)}
   className="rounded-xl border border-white/10 bg-white/[0.04] p-3 lg:hidden"
@@ -417,14 +426,14 @@ useEffect(() => {
 
 </button>
 
-          <h2 className="text-2xl font-semibold">
+          <h2 className="text-lg font-semibold lg:text-2xl">
             Shinora AI Chat
           </h2>
 
         </div>
 
  {/* CHAT AREA */}
-<div className="relative flex-1 overflow-y-auto px-8 py-8">
+<div className="relative flex-1 overflow-y-auto px-4 py-4 lg:px-8 lg:py-8">
 
   {/* GLOW */}
   <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/10 blur-[140px]"></div>
@@ -445,7 +454,7 @@ useEffect(() => {
               >
 
                 <div
-                  className={`max-w-3xl rounded-3xl px-6 py-5 ${
+                  className={`w-full max-w-[95%] lg:max-w-3xl rounded-3xl px-4 py-4 lg:px-6 lg:py-5 ${
                     msg.role === "user"
                       ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-xl shadow-purple-500/20"
                       : "border border-white/10 bg-white/[0.04] text-gray-300 backdrop-blur-xl"
@@ -515,9 +524,9 @@ useEffect(() => {
         </div>
 
         {/* INPUT */}
-<div className="border-t border-white/10 p-8">
+<div className="border-t border-white/10 p-4 lg:p-8">
 
-  <div className="relative mx-auto flex max-w-5xl items-center gap-3 rounded-[36px] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl">
+  <div className="relative mx-auto flex w-full max-w-5xl items-center gap-2 rounded-[24px] border border-white/10 bg-white/[0.04] p-3 backdrop-blur-xl lg:gap-3 lg:rounded-[36px] lg:p-6">
 
     <input
       type="text"
@@ -534,7 +543,7 @@ useEffect(() => {
 
     <button
       onClick={sendMessage}
-      className="rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-4 font-semibold transition hover:scale-105 active:scale-95"
+      className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-3 text-sm font-semibold transition hover:scale-105 active:scale-95 lg:rounded-2xl lg:px-8 lg:py-4 lg:text-base"
     >
 
       Send
@@ -548,7 +557,7 @@ useEffect(() => {
       </section>
 
 {/* RIGHT PANEL */}
-<aside className="w-[340px] border-l border-white/10 bg-[#111827] p-6">
+<aside className="hidden w-[340px] border-l border-white/10 bg-[#111827] p-6 xl:block">
 
   <button
     onClick={newChat}
