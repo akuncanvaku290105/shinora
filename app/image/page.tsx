@@ -139,7 +139,17 @@ const clearImageHistory = () => {
 >
 
       {/* LEFT SIDEBAR */}
-      <aside className="flex w-[310px] flex-col border-r border-white/10 bg-[#111827] p-6">
+      <aside
+  className={`fixed top-0 left-0 z-[60] h-full w-[280px]
+  flex flex-col border-r border-white/10 bg-[#111827] p-6
+  transition-transform duration-300
+  ${
+    sidebarOpen
+      ? "translate-x-0"
+      : "-translate-x-full"
+  }
+  lg:translate-x-0 lg:static lg:w-[310px]`}
+>
 
         {/* LOGO */}
         <div className="mb-10 flex items-center gap-3">
@@ -331,7 +341,7 @@ const clearImageHistory = () => {
 
       </aside>
 
-<main className="relative flex-1 overflow-hidden p-10">
+<main className="relative flex-1 overflow-hidden p-4 sm:p-6 lg:p-10">
   <button
   onClick={() => setSidebarOpen(true)}
   className="mb-6 rounded-xl border border-white/10 bg-white/[0.04] p-3 lg:hidden"
@@ -346,7 +356,7 @@ const clearImageHistory = () => {
 
     <div className="absolute bottom-[-200px] right-[-200px] h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]" />
 
-<div className="mb-10 flex items-center gap-4">
+<div className="mb-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
 
 <Image
   src="/logo.png"
@@ -359,7 +369,7 @@ const clearImageHistory = () => {
   <div>
 
 <h1
-  className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-3xl font-black text-transparent`}>
+  className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-2xl sm:text-3xl font-black text-transparent`}>
   Shinora Image Generator
 </h1>
 
@@ -412,7 +422,7 @@ const clearImageHistory = () => {
 
 </div>
 
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row">
 
           <input
             type="text"
@@ -422,7 +432,7 @@ const clearImageHistory = () => {
             className="flex-1 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-4 outline-none"
           />
 
-            <button onClick={generateImage}className="rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-4 font-semibold">
+            <button onClick={generateImage}className="w-full rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-4 font-semibold sm:w-auto">
             {loading ? "Generating..." : "Generate"}
             </button>
 
@@ -451,7 +461,7 @@ const clearImageHistory = () => {
   <img
     src={imageUrl}
     alt="Generated AI"
-    className="mx-auto w-full max-w-3xl rounded-3xl object-cover"
+    className="mx-auto w-full rounded-3xl object-cover"
   />
   <a
     href={imageUrl}
@@ -490,7 +500,7 @@ const clearImageHistory = () => {
 
 </div>
 
-  <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
+  <div className="grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
   {history.map((item, index) => (
 
@@ -499,12 +509,12 @@ const clearImageHistory = () => {
       className="group relative overflow-hidden rounded-3xl border border-white/10"
     >
 
-      <img
-        src={item}
-        alt="AI History"
-        onClick={() => setSelectedImage(item)}
-        className="cursor-pointer object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-75"
-      />
+<img
+  src={item}
+  alt="AI History"
+  onClick={() => setSelectedImage(item)}
+  className="h-full w-full cursor-pointer object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-75"
+/>
 
       <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 to-transparent p-4 opacity-0 transition duration-500 group-hover:opacity-100">
 
@@ -538,7 +548,7 @@ const clearImageHistory = () => {
 
     </div>
 
-    <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
+    <div className="grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
       {favorites.map((item, index) => (
 
@@ -592,6 +602,14 @@ const clearImageHistory = () => {
         </main>
 
   </div>
+{sidebarOpen && (
+
+  <div
+    onClick={() => setSidebarOpen(false)}
+    className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
+  />
+
+)}
 {sidebarOpen && (
 
   <div
