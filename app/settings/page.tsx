@@ -35,6 +35,8 @@ const clearAllHistory = () => {
 const [theme, setTheme] = useState("purple");
 const [toast, setToast] = useState("");
 const [speed, setSpeed] = useState("normal");
+const [sidebarOpen, setSidebarOpen] =
+  useState(false);
 const [user, setUser] = useState(null);
 useEffect(() => {
 
@@ -105,7 +107,17 @@ const resetSettings = () => {
 >
 
       {/* SIDEBAR */}
-      <aside className="flex w-[310px] flex-col border-r border-white/10 bg-[#111827] p-6">
+      <aside
+  className={`fixed top-0 left-0 z-[60] h-full w-[280px]
+  flex flex-col border-r border-white/10 bg-[#111827] p-6
+  transition-transform duration-300
+  ${
+    sidebarOpen
+      ? "translate-x-0"
+      : "-translate-x-full"
+  }
+  lg:translate-x-0 lg:static lg:w-[310px]`}
+>
 
         {/* LOGO */}
         <div className="mb-10 flex items-center gap-3">
@@ -298,7 +310,16 @@ const resetSettings = () => {
       </aside>
 
       {/* MAIN */}
-      <main className="relative flex-1 overflow-hidden p-10">
+      <main className="relative flex-1 overflow-hidden p-4 sm:p-6 lg:p-10">
+
+<button
+  onClick={() => setSidebarOpen(true)}
+  className="mb-6 rounded-xl border border-white/10 bg-white/[0.04] p-3 lg:hidden"
+>
+
+  ☰
+
+</button>
 
         {/* BACKGROUND */}
         <div className="absolute left-[-200px] top-[-200px] h-[500px] w-[500px] rounded-full bg-purple-500/20 blur-[120px]" />
@@ -306,7 +327,7 @@ const resetSettings = () => {
         <div className="absolute bottom-[-200px] right-[-200px] h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]" />
 
         {/* HEADER */}
-        <div className="mb-12 flex items-center gap-4">
+        <div className="mb-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
 
           <Image
             src="/logo.png"
@@ -319,7 +340,7 @@ const resetSettings = () => {
           <div>
 
             <h1
-              className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-4xl font-black text-transparent`}
+              className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-2xl sm:text-4xl font-black text-transparent`}
             >
               Shinora Settings
             </h1>
@@ -333,7 +354,7 @@ const resetSettings = () => {
         </div>
 
         {/* SETTINGS CARDS */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         
         {/* ACCOUNT */}
 <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl">
@@ -409,7 +430,7 @@ const resetSettings = () => {
 
     </div>
 
-    <div className="flex gap-3">
+    <div className="flex flex-col gap-3 sm:flex-row">
 
       <a
         href="/login"
@@ -449,7 +470,7 @@ const resetSettings = () => {
 
   </div>
 
-  <div className="mt-6 flex gap-3">
+  <div className="mt-6 flex flex-wrap gap-3">
 
 <button
 onClick={() => {
@@ -522,7 +543,7 @@ onClick={() => {
 
   </div>
 
- <div className="mt-6 flex gap-3">
+ <div className="mt-6 flex flex-wrap gap-3">
 
   {/* SLOW */}
 <button
@@ -654,11 +675,25 @@ onClick={() => {
 
         </div>
 {toast && (
-  <div className="fixed bottom-6 right-6 z-50 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-4 font-semibold text-white shadow-2xl">
+  <div className="fixed bottom-6 left-1/2 z-50
+w-[90%] max-w-sm -translate-x-1/2
+rounded-2xl bg-gradient-to-r
+from-blue-500 to-purple-500
+px-6 py-4 text-center font-semibold
+text-white shadow-2xl">
     {toast}
   </div>
 )}
  </main>
+
+{sidebarOpen && (
+
+  <div
+    onClick={() => setSidebarOpen(false)}
+    className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
+  />
+
+)}
 
     </div>
 
