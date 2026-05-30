@@ -14,6 +14,8 @@ import {
   Mail,
   ChevronDown,
   ChevronUp,
+  Menu,
+  X,
 } from "lucide-react";
 
 const orbitron = Orbitron({
@@ -28,6 +30,9 @@ export default function HelpPage() {
 
   const [openFAQ, setOpenFAQ] =
     useState<number | null>(null);
+
+  const [mobileMenu, setMobileMenu] =
+  useState(false);
 
   useEffect(() => {
 
@@ -78,7 +83,7 @@ export default function HelpPage() {
   return (
 
     <div
-      className={`flex min-h-screen text-white ${
+  className={`relative flex min-h-screen overflow-hidden text-white ${
         theme === "purple"
           ? "bg-[#050816]"
           : theme === "blue"
@@ -88,7 +93,13 @@ export default function HelpPage() {
     >
 
       {/* SIDEBAR */}
-      <aside className="flex w-[310px] flex-col border-r border-white/10 bg-[#111827] p-6">
+      <aside
+  className={`fixed left-0 top-0 z-50 flex h-screen w-[280px] flex-col border-r border-white/10 bg-[#111827] p-6 transition-transform duration-300 lg:relative lg:translate-x-0 ${
+    mobileMenu
+      ? "translate-x-0"
+      : "-translate-x-full"
+  }`}
+>
 
         {/* LOGO */}
         <div className="mb-10 flex items-center gap-3">
@@ -266,8 +277,31 @@ export default function HelpPage() {
 
       </aside>
 
+{/* MOBILE MENU BUTTON */}
+<button
+  onClick={() =>
+    setMobileMenu(!mobileMenu)
+  }
+  className="fixed left-4 top-4 z-[60] rounded-xl border border-white/10 bg-white/10 p-3 backdrop-blur-xl lg:hidden"
+>
+  {mobileMenu ? (
+    <X size={22} />
+  ) : (
+    <Menu size={22} />
+  )}
+</button>
+
+{mobileMenu && (
+  <div
+    onClick={() =>
+      setMobileMenu(false)
+    }
+    className="fixed inset-0 z-40 bg-black/60 lg:hidden"
+  />
+)}
+
       {/* MAIN */}
-      <main className="relative flex-1 overflow-hidden p-10">
+      <main className="relative flex-1 overflow-hidden p-4 pt-20 sm:p-6 lg:p-10">
 
         {/* BG */}
         <div className="absolute left-[-200px] top-[-200px] h-[500px] w-[500px] rounded-full bg-purple-500/20 blur-[120px]" />
@@ -278,7 +312,7 @@ export default function HelpPage() {
         <div className="mb-12">
 
           <h1
-            className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-5xl font-black text-transparent`}
+            className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-3xl sm:text-5xl font-black text-transparent`}
           >
             Help & FAQ
           </h1>
@@ -296,7 +330,7 @@ export default function HelpPage() {
 
             <div
               key={index}
-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl transition hover:bg-white/[0.06]"
+              className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 sm:p-6 backdrop-blur-xl transition hover:bg-white/[0.06]"
             >
 
               <button
@@ -310,7 +344,7 @@ export default function HelpPage() {
                 className="flex w-full items-center justify-between text-left"
               >
 
-                <h2 className="text-lg font-semibold">
+                <h2 className="text-base sm:text-lg font-semibold">
                   {faq.question}
                 </h2>
 
