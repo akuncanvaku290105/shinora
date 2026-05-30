@@ -19,7 +19,7 @@ export default function RegisterPage() {
   const handleRegister = async () => {
 
     const response = await fetch(
-      "http://localhost/backend/register.php",
+      "https://shinora.infinityfreeapp.com/backend/register.php",
       {
         method: "POST",
         headers: {
