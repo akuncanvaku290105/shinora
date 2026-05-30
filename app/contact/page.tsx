@@ -10,7 +10,9 @@ import {
   ImageIcon,
   Settings,
   CircleHelp,
-  Mail
+  Mail,
+  Menu,
+  X
 } from "lucide-react";
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -19,6 +21,8 @@ const orbitron = Orbitron({
 export default function ContactPage() {
 const pathname = usePathname();
 const [theme, setTheme] = useState("purple");
+const [mobileMenu, setMobileMenu] =
+  useState(false);
 
 useEffect(() => {
 
@@ -35,8 +39,8 @@ useEffect(() => {
 
   return (
 
-    <div
-  className={`flex min-h-screen text-white ${
+<div
+  className={`relative flex min-h-screen overflow-hidden text-white ${
     theme === "purple"
       ? "bg-[#050816]"
       : theme === "blue"
@@ -46,7 +50,15 @@ useEffect(() => {
 >
 
   {/* LEFT SIDEBAR */}
-  <aside className="flex w-[310px] flex-col border-r border-white/10 bg-[#111827] p-6">
+  <aside
+  className={`fixed left-0 top-0 z-50 flex h-screen w-[280px]
+  flex-col border-r border-white/10 bg-[#111827] p-6
+  transition-transform duration-300 lg:relative lg:translate-x-0 ${
+    mobileMenu
+      ? "translate-x-0"
+      : "-translate-x-full"
+  }`}
+>
 
         {/* LOGO */}
          <div className="mb-10 flex items-center gap-3">
@@ -246,8 +258,22 @@ useEffect(() => {
 
         </div>
 
-      </aside>
-    <main className="relative flex-1 overflow-hidden p-10">
+</aside>
+
+<main className="relative flex-1 overflow-hidden p-4 pt-20 sm:p-6 lg:p-10">
+
+<button
+  onClick={() =>
+    setMobileMenu(!mobileMenu)
+  }
+  className="fixed left-4 top-4 z-[60] rounded-xl border border-white/10 bg-white/10 p-3 backdrop-blur-xl lg:hidden"
+>
+  {mobileMenu ? (
+    <X size={22} />
+  ) : (
+    <Menu size={22} />
+  )}
+</button>
 
       {/* BACKGROUND */}
       <div className="absolute left-[-200px] top-[-200px] h-[500px] w-[500px] rounded-full bg-purple-500/20 blur-[120px]" />
@@ -255,7 +281,7 @@ useEffect(() => {
       <div className="absolute bottom-[-200px] right-[-200px] h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]" />
 
       {/* HEADER */}
-      <div className="mb-12 flex items-center gap-4">
+      <div className="mb-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
 
         <Image
           src="/logo.png"
@@ -268,7 +294,7 @@ useEffect(() => {
         <div>
 
           <h1
-            className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-4xl font-black text-transparent`}
+            className={`${orbitron.className} bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-2xl sm:text-4xl font-black text-transparent`}
           >
             Contact Shinora
           </h1>
@@ -282,19 +308,19 @@ useEffect(() => {
       </div>
 
       {/* CONTACT CARDS */}
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
 
         {/* EMAIL */}
         <a
           href="mailto:ikhsanalirahman05@email.com"
-          className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition hover:scale-[1.02] hover:bg-white/[0.06]"
+          className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 sm:p-8 transition hover:scale-[1.02] hover:bg-white/[0.06]"
         >
 
           <p className="text-sm text-gray-400">
             Email
           </p>
 
-          <h2 className="mt-3 text-2xl font-medium tracking-wide text-gray-100">
+          <h2 className="mt-3 text-lg break-all sm:text-2xl font-medium tracking-wide text-gray-100">
             ikhsanalirahman05@email.com
           </h2>
 
@@ -304,14 +330,14 @@ useEffect(() => {
         <a
           href="https://instagram.com/ikhsan.ar_"
           target="_blank"
-          className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition hover:scale-[1.02] hover:bg-white/[0.06]"
+          className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 sm:p-8 transition hover:scale-[1.02] hover:bg-white/[0.06]"
         >
 
           <p className="text-sm text-gray-400">
             Instagram
           </p>
 
-          <h2 className="mt-3 text-2xl font-medium tracking-wide text-gray-100">
+          <h2 className="mt-3 text-lg break-all sm:text-2xl font-medium tracking-wide text-gray-100">
             @ikhsan.ar_
           </h2>
 
@@ -321,14 +347,14 @@ useEffect(() => {
         <a
           href="https://wa.me/6283837924951"
           target="_blank"
-          className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition hover:scale-[1.02] hover:bg-white/[0.06]"
+          className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 sm:p-8 transition hover:scale-[1.02] hover:bg-white/[0.06]"
         >
 
           <p className="text-sm text-gray-400">
             WhatsApp
           </p>
 
-          <h2 className="mt-3 text-2xl font-medium tracking-wide text-gray-100">
+          <h2 className="mt-3 text-lg break-all sm:text-2xl font-medium tracking-wide text-gray-100">
             +62 838-3792-4951
           </h2>
 
@@ -338,14 +364,14 @@ useEffect(() => {
         <a
           href="https://linkedin.com/in/Ikhsan Ali Rahman"
           target="_blank"
-          className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 transition hover:scale-[1.02] hover:bg-white/[0.06]"
+          className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 sm:p-8 transition hover:scale-[1.02] hover:bg-white/[0.06]"
         >
 
           <p className="text-sm text-gray-400">
             LinkedIn
           </p>
 
-          <h2 className="mt-3 text-2xl font-medium tracking-wide text-gray-100">
+          <h2 className="mt-3 text-lg break-all sm:text-2xl font-medium tracking-wide text-gray-100">
             Ikhsan Ali Rahman
           </h2>
 
@@ -353,6 +379,14 @@ useEffect(() => {
 
       </div>
 
+{mobileMenu && (
+  <div
+    onClick={() =>
+      setMobileMenu(false)
+    }
+    className="fixed inset-0 z-40 bg-black/60 lg:hidden"
+  />
+)}
    </main>
 
 </div>
