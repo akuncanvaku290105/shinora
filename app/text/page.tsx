@@ -188,12 +188,12 @@ return (
 <aside
   className={`fixed left-0 top-0 z-[60] flex h-full w-[280px]
   flex-col border-r border-white/10 bg-[#111827] p-6
-  transition-transform duration-300
-  lg:static lg:w-[310px] lg:translate-x-0
+  transition-all duration-300
+  lg:static lg:w-[310px]
   ${
     sidebarOpen
-      ? "translate-x-0"
-      : "-translate-x-full"
+      ? "left-0"
+      : "-left-[300px]"
   }`}
 >
 
